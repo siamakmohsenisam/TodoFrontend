@@ -11,6 +11,7 @@ import UIKit
 class TodoDetailViewController: UIViewController {
     
     
+    @IBOutlet weak var myTitle: UILabel!
     @IBOutlet weak var id: UITextField!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var detail: UITextField!
@@ -19,7 +20,7 @@ class TodoDetailViewController: UIViewController {
     @IBOutlet weak var completed: UISwitch!
     @IBOutlet weak var cynced: UISwitch!
     
-    
+    var myState = 0
     var  toDo = TodoModel()
     
     @IBAction func btnExit(_ sender: UIButton) {
@@ -79,7 +80,7 @@ class TodoDetailViewController: UIViewController {
         }
         
         dismiss(animated: true, completion: nil)
-
+        
     }
     
     
@@ -87,12 +88,19 @@ class TodoDetailViewController: UIViewController {
         super.viewDidLoad()
         myView.layer.cornerRadius = 12
         myView.layer.masksToBounds = true
-        id.text = String (toDo.todoId)
-        name.text = toDo.name
-        detail.text = toDo.details
-        notes.text = toDo.notes
-        completed.setOn(toDo.completed, animated: false)
-        cynced.setOn(toDo.synced, animated: false)
+        
+        if myState == 1 {
+            
+            myTitle.text = "Detail and update"
+            id.isEnabled = false
+            
+            id.text = String (toDo.todoId)
+            name.text = toDo.name
+            detail.text = toDo.details
+            notes.text = toDo.notes
+            completed.setOn(toDo.completed, animated: false)
+            cynced.setOn(toDo.synced, animated: false)
+        }
     }
     
 }

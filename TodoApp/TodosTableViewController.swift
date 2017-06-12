@@ -37,6 +37,7 @@ class TodosTableViewController: UITableViewController
             if identifire == "detailIdentifire" {
                 if let row = tableView.indexPathForSelectedRow {
                     destination.toDo = myToDo[row.row]
+                    destination.myState = 1
                 }
             }
         }
