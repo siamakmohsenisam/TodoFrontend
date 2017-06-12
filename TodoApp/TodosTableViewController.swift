@@ -22,9 +22,6 @@ class TodosTableViewController: UITableViewController
                 if let response = responseData{
                     self.myToDo = response
                     self.tableView.reloadData()
-                    
-                    
-                    
                 }
             }
         }
@@ -32,7 +29,6 @@ class TodosTableViewController: UITableViewController
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         
         if let identifire = segue.identifier ,
             let destination  = segue.destination as? TodoDetailViewController {
