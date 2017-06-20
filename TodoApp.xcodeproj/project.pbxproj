@@ -17,6 +17,10 @@
 		3DB2E7AA1CFFB0680077176C /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB2E7A61CFFB0680077176C /* TodoManager.swift */; };
 		3DB2E7AB1CFFB0680077176C /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB2E7A71CFFB0680077176C /* TodoModel.swift */; };
 		3DB2E7AC1CFFB0680077176C /* WebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB2E7A81CFFB0680077176C /* WebServiceManager.swift */; };
+		651ED0E31EF94B10006E682B /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651ED0E21EF94B10006E682B /* LoginManager.swift */; };
+		651ED0E51EF9B8C8006E682B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651ED0E41EF9B8C8006E682B /* Login.swift */; };
+		651ED0E71EF9D738006E682B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651ED0E61EF9D738006E682B /* LoginResponse.swift */; };
+		65EE8E7D1EF40D080099B332 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE8E7C1EF40D080099B332 /* LoginViewController.swift */; };
 		C7866F4B2B524272EAC75E9A /* Pods_TodoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C349DE99270EFEB0BC887906 /* Pods_TodoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,10 @@
 		3DB2E7A71CFFB0680077176C /* TodoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 		3DB2E7A81CFFB0680077176C /* WebServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceManager.swift; sourceTree = "<group>"; };
 		5B4D37F7278CCAB4D9037E21 /* Pods-2016-06-01-codelab-frontend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2016-06-01-codelab-frontend.release.xcconfig"; path = "Pods/Target Support Files/Pods-2016-06-01-codelab-frontend/Pods-2016-06-01-codelab-frontend.release.xcconfig"; sourceTree = "<group>"; };
+		651ED0E21EF94B10006E682B /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		651ED0E41EF9B8C8006E682B /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		651ED0E61EF9D738006E682B /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		65EE8E7C1EF40D080099B332 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C349DE99270EFEB0BC887906 /* Pods_TodoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F652E0E510357529DD1D21F6 /* Pods-2016-06-01-codelab-frontend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2016-06-01-codelab-frontend.debug.xcconfig"; path = "Pods/Target Support Files/Pods-2016-06-01-codelab-frontend/Pods-2016-06-01-codelab-frontend.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +88,7 @@
 				3D318AB01CFE6CB4008BAAE2 /* Info.plist */,
 				3D318AAD1CFE6CB4008BAAE2 /* LaunchScreen.storyboard */,
 				3D318AA81CFE6CB4008BAAE2 /* Main.storyboard */,
+				65EE8E7C1EF40D080099B332 /* LoginViewController.swift */,
 				3DB2E7A21CFFAE490077176C /* TodoDetailViewController.swift */,
 				3DB2E7A01CFFA6580077176C /* TodosTableViewController.swift */,
 			);
@@ -102,6 +111,9 @@
 				3DB2E7A61CFFB0680077176C /* TodoManager.swift */,
 				3DB2E7A71CFFB0680077176C /* TodoModel.swift */,
 				3DB2E7A81CFFB0680077176C /* WebServiceManager.swift */,
+				651ED0E21EF94B10006E682B /* LoginManager.swift */,
+				651ED0E41EF9B8C8006E682B /* Login.swift */,
+				651ED0E61EF9D738006E682B /* LoginResponse.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -241,11 +253,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB2E7AA1CFFB0680077176C /* TodoManager.swift in Sources */,
+				651ED0E51EF9B8C8006E682B /* Login.swift in Sources */,
 				3DB2E7A31CFFAE490077176C /* TodoDetailViewController.swift in Sources */,
 				3DB2E7A91CFFB0680077176C /* DatabaseManager.swift in Sources */,
 				3DB2E7AC1CFFB0680077176C /* WebServiceManager.swift in Sources */,
+				65EE8E7D1EF40D080099B332 /* LoginViewController.swift in Sources */,
+				651ED0E31EF94B10006E682B /* LoginManager.swift in Sources */,
 				3D318AA51CFE6CB4008BAAE2 /* AppDelegate.swift in Sources */,
 				3DB2E7AB1CFFB0680077176C /* TodoModel.swift in Sources */,
+				651ED0E71EF9D738006E682B /* LoginResponse.swift in Sources */,
 				3DB2E7A11CFFA6580077176C /* TodosTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

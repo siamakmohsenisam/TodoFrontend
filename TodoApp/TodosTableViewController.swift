@@ -16,15 +16,18 @@ class TodosTableViewController: UITableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TodoManager.localTodos {
+        
+        TodoManager.todos {
             (responseData, error) in
             if error == false {
                 if let response = responseData{
+                    
                     self.myToDo = response
-                    self.tableView.reloadData()
+                    self.tableView.reloadData()         
                 }
             }
         }
+        
         navigationItem.rightBarButtonItems?.append(editButtonItem)
     }
     
@@ -63,7 +66,7 @@ class TodosTableViewController: UITableViewController
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
-        cell.textLabel?.text = myToDo[indexPath.row].name + "    "+"\(myToDo[indexPath.row].todoId)"
+        cell.textLabel?.text = myToDo[indexPath.row].name + "    " + "\(myToDo[indexPath.row].todoId)"
         
         // Configure the cell...
         
@@ -84,6 +87,23 @@ class TodosTableViewController: UITableViewController
     override  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete
         {
+            
+            let toDo = myToDo[indexPath.row]
+            let toDoJson = ["id" : toDo.todoId]
+            
+            var toDoHeader = Dictionary<String, String>()
+            
+            for (key, value) in toDoJson {
+                toDoHeader[key] = String(describing: value)
+            }
+            
+            TodoManager.deleteTodo(toDoHeader as [String : AnyObject],  { (responseData, error) in
+                
+                if error == false {
+                   
+                }
+            })
+            
             deleteData(myToDo[indexPath.row])
             
             myToDo.remove(at: indexPath.row)

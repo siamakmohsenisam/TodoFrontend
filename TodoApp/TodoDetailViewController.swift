@@ -10,7 +10,6 @@ import UIKit
 
 class TodoDetailViewController: UIViewController {
     
-    
     @IBOutlet weak var myTitle: UILabel!
     @IBOutlet weak var id: UITextField!
     @IBOutlet weak var name: UITextField!
@@ -21,14 +20,14 @@ class TodoDetailViewController: UIViewController {
     @IBOutlet weak var cynced: UISwitch!
     
     var myState = 0
-    var  toDo = TodoModel()
+    var  toDo : TodoModel!
     
     @IBAction func btnExit(_ sender: UIButton) {
         
         dismiss(animated: true, completion: nil)
     }
     @IBAction func btnSave(_ sender: UIButton) {
-        
+        toDo = TodoModel()
         var v = TodosTableViewController()
         
         if let views = (presentingViewController?.childViewControllers) {
@@ -41,8 +40,6 @@ class TodoDetailViewController: UIViewController {
             }
         }
         
-        
-        let  toDo = TodoModel()
         if let myName = name.text , let myDetail = detail.text ,
             let myNotes = notes.text , let myId = id.text {
             
@@ -56,7 +53,6 @@ class TodoDetailViewController: UIViewController {
                 toDo.todoId = intId
             }
             
-            
             if completed.isOn {
                 toDo.completed = true
             }
@@ -64,25 +60,27 @@ class TodoDetailViewController: UIViewController {
                 toDo.synced = true
             }
         }
+    
+        //  copy toDo into backend
         
-        v.myToDo.append(toDo)
-        saveData(v.myToDo)
+        var toDoJson = toDo.toJSON()
+        toDoJson["id"] = toDo.todoId
         
-        TodoManager.localTodos {
-            (responseData, error) in
-            if error == false {
-                if let response = responseData{
-                    v.myToDo = response
-                    v.tableView.reloadData()
-                    
-                }
-            }
+        var toDoHeader = Dictionary<String, String>()
+        
+        for (key, value) in toDoJson {
+            toDoHeader[key] = String(describing: value)
         }
         
-        dismiss(animated: true, completion: nil)
-        
+        TodoManager.addTodo(toDoHeader as [String : AnyObject],  { (responseData, error) in
+            
+            if error == false {
+                v.myToDo = responseData!
+                v.tableView.reloadData()
+            }
+        })
+         dismiss(animated: true, completion: nil)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,9 +98,9 @@ class TodoDetailViewController: UIViewController {
             notes.text = toDo.notes
             completed.setOn(toDo.completed, animated: false)
             cynced.setOn(toDo.synced, animated: false)
+            myState = 0
         }
     }
-    
 }
 
 

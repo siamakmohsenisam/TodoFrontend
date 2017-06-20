@@ -37,4 +37,15 @@ class TodoModel: Object, Mappable {
         completed <- map["completed"]
         synced <- map["synced"]
     }
+    
+     
+    
+    
 }
+
+
+
+
+
+
+

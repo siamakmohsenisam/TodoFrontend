@@ -13,47 +13,39 @@ import Alamofire
 
 class TodoManager {
     
-    class func todos(_ completion: @escaping (_ responseData:[TodoModel]?, _ error: Bool?) -> ()) {
+    class func todos(_ requestParameters: [String: AnyObject]? = nil ,_ completion: @escaping (_ responseData:[TodoModel]?, _ error: Bool?) -> ()) {
         
         let url = URL(string: "http://localhost:8080/todos")!
-        WebServiceManger.sendRequest(url: url, requestMethod: .get, responseType: TodoModel.self) {
+        WebServiceManger.sendRequest(requestParameters, url: url, requestMethod: .get, responseType: TodoModel.self) {
             (responseData:[TodoModel]?, error: Bool?) -> Void in
-            print(responseData!)
+         //   print(responseData!)
             completion(responseData, false)
         }
     }
     
     
     
-    /*
-     
-     
-     class func addTodo(_ requestParameters: [String: AnyObject]?,_ completion:@escaping (_ responseData:[TodoModel]?, _ error: Bool?) -> ()) {
-     
-     let url = URL(string: "http://localhost:8080/postTodo")!
-     WebServiceManger.sendRequest(requestParameters,url: url, requestMethod: .post, responseType: TodoModel.self) {
-     (responseData:[TodoModel]?, error: Bool?) -> Void in
-     print(responseData!)
-     completion(responseData, false)
-     }
-     }
-
-     
-     
-     
-     
- */
-    
-    class func addTodo(_ completion:@escaping (_ responseData:[TodoModel]?, _ error: Bool?) -> ()) {
+    class func addTodo(_ requestParameters: [String: AnyObject]? = nil , _ completion:@escaping (_ responseData:[TodoModel]?, _ error: Bool?) -> ()) {
         
         let url = URL(string: "http://localhost:8080/postTodo")!
-        WebServiceManger.sendRequest(url: url, requestMethod: .post, responseType: TodoModel.self) {
+        WebServiceManger.sendRequest(requestParameters , url: url, requestMethod: .post, responseType: TodoModel.self) {
             (responseData:[TodoModel]?, error: Bool?) -> Void in
-            print(responseData!)
+       //     print(responseData!)
             completion(responseData, false)
         }
     }
     
+    
+    class func deleteTodo(_ requestParameters: [String: AnyObject]? = nil , _ completion:@escaping (_ responseData:[TodoModel]?, _ error: Bool?) -> ()) {
+        
+        let url = URL(string: "http://localhost:8080/deleteTodo")!
+        WebServiceManger.sendRequest(requestParameters , url: url, requestMethod: .delete, responseType: TodoModel.self) {
+            (responseData:[TodoModel]?, error: Bool?) -> Void in
+            //     print(responseData!)
+            completion(responseData, false)
+        }
+    }
+
     class func localTodos(_ completion:@escaping (_ responseData:[TodoModel]?, _ error: Bool?) -> ()) {
         
         readData(TodoModel.self, predicate: nil) {
