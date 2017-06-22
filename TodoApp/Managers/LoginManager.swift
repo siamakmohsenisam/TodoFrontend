@@ -25,16 +25,16 @@ class LoginManager {
         }
     }
     
-    class func toLogin(_ requestParameters: [String: String]? = nil ,_ completion: @escaping (_ responseData:Login?, _ error: Bool?) -> ()) {
-        
-        let url = URL(string: "http://localhost:8080/login")!
-        WebServiceManger.sendRequest(requestHeaders: requestParameters!, url: url, requestMethod: .get, responseType: Login.self) {
-            (responseData: Login?, error: Bool?) -> Void in
-            //   print(responseData!)
-            completion(responseData, false)
-        }
-    }
-
+//    class func toLogin(_ requestParameters: [String: String]? = nil ,_ completion: @escaping (_ responseData:Login?, _ error: Bool?) -> ()) {
+//        
+//        let url = URL(string: "http://localhost:8080/login")!
+//        WebServiceManger.sendRequest(requestHeaders: requestParameters!, url: url, requestMethod: .get, responseType: Login.self) {
+//            (responseData: Login?, error: Bool?) -> Void in
+//            //   print(responseData!)
+//            completion(responseData, false)
+//        }
+//    }
+//
     
     // 2 : if we don't have class login
     

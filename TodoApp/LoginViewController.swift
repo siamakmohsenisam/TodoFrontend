@@ -11,13 +11,18 @@ import ObjectMapper
 import Alamofire
 
 class LoginViewController: UIViewController {
+    
     @IBOutlet weak var username: UITextField!
 
     @IBOutlet weak var password: UITextField!
     
+    @IBAction func register(_ sender: UIButton) {
+        password.text = ""
+    }
     @IBAction func btnLogin(_ sender: UIButton) {
         
         LoginManager.login(userName: username.text!, password: password.text!) {
+            
             (responseData, error) in
             if let response = responseData {
                 if response.success == true {
@@ -57,9 +62,20 @@ class LoginViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
+        
+        if let ident = segue.identifier{
+            if ident == "registration" {
+                if let registerView = segue.destination as? RegisterViewController{
+                    registerView.delegate = self
+                }
+                
+            }
+        }
+        
+        
+        
+        
+            }
 //    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
 //        if identifier == "logIdentifier" {
 //            if username.text == "username" && password.text == "password"{
@@ -71,7 +87,16 @@ class LoginViewController: UIViewController {
 
 }
 
+protocol RegistertionDelegate: class {
+    func userRegistered(name: String)
+}
 
+extension LoginViewController: RegistertionDelegate {
+    func userRegistered(name: String) {
+        print("Child did something")
+        username.text = name
+    }
+}
 
 
 
